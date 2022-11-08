@@ -12,7 +12,18 @@ if(!R::testConnection())
     exit("Нет подключения к бд");
 }
 
-$table = R::dispense('money');
-$table -> sum = $entry;
+if ($entry == 0)
+{
+    ?><script> alert("ВВЕДИТЕ СУММУ");</script>    <?php
+}else
+{
+    $table = R::dispense('money');
+    $table -> sum = $entry;
 
-R::store($table);
+    R::store($table);
+    header('Location: /');
+}
+
+R::close();
+
+

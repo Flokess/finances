@@ -18,14 +18,18 @@
     <form action="/php/db_save.php" method="post">
         <h3>Введите расходы</h3>
         <input type="text" class="form-control" name="entry" id="sum" placeholder="">
-        <button class="btn btn-success" type="submit">Записать</button>
+        <button class="btn-success" type="submit">Записать</button>
         <hr />
     </form>
-    <form action="" method="post">
+    <form action="/php/result.php" method="post">
         <h3>Расходы за месяц</h3>
-        <button class="btn btn-success" type="submit">Вычислить</button>
+        <button class="btn-success" type="submit">Вычислить</button>
         <input type="text" class="form-control" name="сумма" id="summ" placeholder="">
     </form>
+    <form action="/php/reset.php" class="reset">
+        <button type="submit" class="btn__reset">Сброс базы данных</button>
+    </form>
+
 
 </div>
 </body>
