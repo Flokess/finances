@@ -15,14 +15,16 @@
 <body>
 <div class="container">
     <h1 class="ogl">Система по учёту доходов и расходов</h1>
-    <form action="" method="post">
+    <form action="/php/db_save.php" method="post">
         <h3>Введите расходы</h3>
         <input type="text" class="form-control" name="сумма" id="sum" placeholder="">
         <button class="btn btn-success" type="submit">Записать</button>
         <hr />
+    </form>
+    <form action="" method="post">
         <h3>Расходы за месяц</h3>
         <button class="btn btn-success" type="submit">Вычислить</button>
-        <input type="text" class="form-control" name="сумма" id="sum" placeholder="">
+        <input type="text" class="form-control" name="сумма" id="summ" placeholder="">
     </form>
 
 </div>
