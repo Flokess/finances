@@ -9,6 +9,7 @@ function dump($what)
     echo '<pre>';print_r($what);echo '</pre>';
 }
 
+
 if($_POST['month'] == 1){
     $name_month = "Январь";
 }else if($_POST['month'] == 2){
@@ -63,4 +64,5 @@ foreach ($expenses as $expens)
 
 
 require_once "../index.html";
+
 
