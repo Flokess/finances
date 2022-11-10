@@ -9,10 +9,15 @@ function dump($what)
 {
     echo '<pre>';print_r($what);echo '</pre>';
 }
-
-$expenses = R::loadAll('money', [1,2,3] );
-
-
-
+$expenses = R::findAll('money');
+$limit = 150;
+$expenses = R::findAll('money' , 'ORDER BY id ASC LIMIT ?', [$limit]);
 
 
+$sum = 0;
+foreach ($expenses as $expens){
+    $sasd = $expens['sum'];
+     $sum += (int)$expens['sum'];
+}
+
+echo $sum;
