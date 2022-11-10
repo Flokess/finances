@@ -11,6 +11,7 @@
             rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
 <div class="container">
@@ -18,13 +19,23 @@
     <form action="/php/db_save.php" method="post">
         <h3>Введите расходы</h3>
         <input type="text" class="form-control" name="entry" id="sum" placeholder="">
-        <button class="btn-success" type="submit">Записать</button>
+        <button class="btn-success" type="submit">Записать</button><br><br>
+        <input type="date" name="date" class="date">
         <hr />
     </form>
     <form action="/php/result.php" method="post">
-        <h3>Расходы за месяц</h3>
+        <h3>Расходы за месяц </h3>
         <button class="btn-success" type="submit">Вычислить</button>
-        <input type="text" class="form-control" name="сумма" id="summ" placeholder="">
+        <select name="month" class="vib"><option value="1">Январь</option><option value="2">Февраль</option>
+            <option value="3">Март</option><option value="4">Апрель</option>
+            <option value="5">Май</option><option value="6">Июнь</option>
+            <option value="7">Июль</option><option value="8">Август</option>
+            <option value="9">Сентябрь</option><option value="10">Октябрь</option>
+            <option value="11">Ноябрь</option><option value="12">Декабрь</option></select><br><br>
+        <input type="text" class="form-control" name="сумма" id="summ" placeholder=" <?php echo "Траты за " . $name_month .":". $sum ?> "><br><br>
+
+        <input type="text" class="form-control" name="сумма" id="summmm" placeholder=" <?php echo "Потрачено всего: " . $sumALL ?> "><br>
+
     </form>
     <form action="/php/reset.php" class="reset">
         <button type="submit" class="btn__reset">Сброс базы данных</button>
