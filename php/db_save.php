@@ -14,7 +14,7 @@ if(!R::testConnection())
 
 if ($entry == 0)
 {
-    ?><script> alert("ВВЕДИТЕ СУММУ");</script>    <?php
+    ?><script> alert("ВВЕДИТЕ СУММУ");</script>  <?php
 }else
 {
     $table = R::dispense('money');

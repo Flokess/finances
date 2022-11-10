@@ -11,6 +11,7 @@
             rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
 <div class="container">
@@ -24,7 +25,7 @@
     <form action="/php/result.php" method="post">
         <h3>Расходы за месяц</h3>
         <button class="btn-success" type="submit">Вычислить</button>
-        <input type="text" class="form-control" name="сумма" id="summ" placeholder="">
+        <input type="text" class="form-control" name="сумма" id="summ" placeholder=" <?php echo $sum ?> ">
     </form>
     <form action="/php/reset.php" class="reset">
         <button type="submit" class="btn__reset">Сброс базы данных</button>
