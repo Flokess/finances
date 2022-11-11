@@ -4,37 +4,13 @@ class_alias('\RedBeanPHP\R', '\R');
 R::setup('mysql:host=127.0.0.1;dbname=expenses', 'root', 'root');
 
 
-function dump($what)
+
+function Search($value, $array)
 {
-    echo '<pre>';print_r($what);echo '</pre>';
+    return (array_search($value, $array));
 }
-
-
-if($_POST['month'] == 1){
-    $name_month = "Январь";
-}else if($_POST['month'] == 2){
-    $name_month = "Февраль";
-}else if($_POST['month'] == 3){
-    $name_month = "Март";
-}else if($_POST['month'] == 4){
-    $name_month = "Апрель";
-}else if($_POST['month'] == 5){
-    $name_month = "Май";
-}else if($_POST['month'] == 6){
-    $name_month = "Июнь";
-}else if($_POST['month'] == 7){
-    $name_month = "Июль";
-}else if($_POST['month'] == 8){
-    $name_month = "Август";
-}else if($_POST['month'] == 9){
-    $name_month = "Сентябрь";
-}else if($_POST['month'] == 10){
-    $name_month = "Октябрь";
-}else if($_POST['month'] == 11){
-    $name_month = "Ноябрь";
-}else if($_POST['month'] == 12){
-    $name_month = "Декабрь";
-}
+$param = ["Январь"=>"1", "Февраль"=>"2", "Март"=>"3", "Апрель"=>"4", "Май"=>"5", "Июнь"=>"6", "Июль"=>"7", "Август"=>"8", "Сентябрь"=>"9", "Октябрь"=>"10", "Ноябрь"=>"11", "Декабрь"=>"12"];
+$name_month = (Search($_POST['month'], $param));
 
 
 
@@ -60,7 +36,6 @@ foreach ($expenses as $expens)
 {
     $sumALL += (int)$expens['sum'];
 }
-
 
 
 require_once "../index.html";
