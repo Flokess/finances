@@ -1,5 +1,5 @@
 <?php
-require_once "sort.php";
+require_once "Sort.php";
 require_once "SQLQuery.php";
 SQLQuery::connect();
 
@@ -7,7 +7,7 @@ $entry = $_POST['entry'];
 $date = $_POST['date'];
 $category = $_POST['category'];
 
-$category = (sort::Search($_POST['category'], SQLQuery::paramCategory));
+$category = (Sort::Search($_POST['category'], SQLQuery::paramCategory));
 
 if ($entry == 0 | $date == 0) {
     ?>

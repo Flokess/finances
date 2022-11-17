@@ -1,5 +1,5 @@
 <?php
-class sort
+class Sort
 {
     static function Search($value, $array)
     {

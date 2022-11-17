@@ -8,7 +8,7 @@ class SQLQuery
 
     static function category()
     {
-        $category = (sort::Search($_POST['category'], self::paramCategory));
+        $category = (Sort::Search($_POST['category'], self::paramCategory));
 
         $year = date('Y');
         $number = cal_days_in_month(CAL_GREGORIAN, $_POST['month'], $year);

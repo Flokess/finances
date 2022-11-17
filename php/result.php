@@ -1,19 +1,19 @@
 <?php
-require_once "sort.php";
+require_once "Sort.php";
 require_once "SQLQuery.php";
 SQLQuery::connect();
 
-$category = (sort::Search($_POST['category'], SQLQuery::paramCategory));
+$category = (Sort::Search($_POST['category'], SQLQuery::paramCategory));
 
-$name_month = (sort::Search($_POST['month'], SQLQuery::paramMonth));
+$name_month = (Sort::Search($_POST['month'], SQLQuery::paramMonth));
 
 $expenses = SQLQuery::category();
 
-$sum = sort::sum($expenses);
+$sum = Sort::sum($expenses);
 
 $expenses = R::findAll('money');
 
-$sumALL = sort::sum($expenses);
+$sumALL = Sort::sum($expenses);
 
 require_once "../index.html";
 
