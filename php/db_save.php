@@ -1,27 +1,22 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-
-class_alias('\RedBeanPHP\R', '\R');
-R::setup('mysql:host=127.0.0.1;dbname=expenses', 'root', 'root');
+require_once "sort.php";
+require_once "SQLQuery.php";
+SQLQuery::connect();
 
 $entry = $_POST['entry'];
 $date = $_POST['date'];
+$category = $_POST['category'];
 
-if (!R::testConnection()) {
-    exit("Нет подключения к бд");
-}
+$category = (sort::Search($_POST['category'], SQLQuery::paramCategory));
 
 if ($entry == 0 | $date == 0) {
-?><script>
+    ?>
+    <script>
         alert("ВВЕДИТЕ СУММУ И ДАТУ");
     </script> <?php
-            } else {
-                $table = R::dispense('money');
-                $table->sum = $entry;
-                $table->date = $date;
+} else {
+    SQLQuery::addRecord($entry, $date, $category);
+    header('Location: /');
+}
+R::close();
 
-                R::store($table);
-                header('Location: /');
-            }
-
-            R::close();
