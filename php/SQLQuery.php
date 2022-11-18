@@ -6,9 +6,11 @@ class SQLQuery
 
     public const paramCategory = ["Всякие фигульки" => "1", "Детки" => "2", "Забота о себе" => "3", "Здоровье и фитнес" => "4", "Кафе и рестораны" => "5", "Квартира(дом)" => "6", "Машина" => "7", "Образование" => "8", "Шоппинг" => "9", "Отдых и развлечение" => "10", "Подарки" => "11", "Все категории" => "12"];
 
+    public const paramCategoryIncome = ["Заработная плата" => "1", "Пенсия" => "2", "Прочий доход" => "3"];
+
     static function category()
     {
-        $category = (Sort::Search($_POST['category'], self::paramCategory));
+        $category = (Sort::Search($_POST['categoryExpense'], self::paramCategory));
 
         $year = date('Y');
         $number = cal_days_in_month(CAL_GREGORIAN, $_POST['month'], $year);
@@ -43,5 +45,15 @@ class SQLQuery
         include $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
         class_alias('\RedBeanPHP\R', '\R');
         R::setup('mysql:host=127.0.0.1;dbname=expenses', 'root', 'root');
+    }
+
+    static function addRecordIncome($income, $date, $category)
+    {
+        $table = R::dispense('income');
+        $table->quantity = $income;
+        $table->date = $date;
+        $table->category = $category;
+
+        R::store($table);
     }
 }

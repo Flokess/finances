@@ -7,7 +7,7 @@ $entry = $_POST['entry'];
 $date = $_POST['date'];
 $category = $_POST['category'];
 
-$category = (Sort::Search($_POST['category'], SQLQuery::paramCategory));
+$category = (Sort::Search($_POST['categoryExpense'], SQLQuery::paramCategory));
 
 if ($entry == 0 | $date == 0) {
     ?>

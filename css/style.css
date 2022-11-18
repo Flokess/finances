@@ -1,15 +1,17 @@
-form{
+.fullexpense {
     width: 500px;
     padding-left: 10%;
 }
-.form-control{
+
+.form-control {
     border-radius: 50px;
     background-color: #c5c8cf;
     padding: 8px 30px;
     font-size: 12px;
     border-color: #3a518d;
 }
-.btn-success{
+
+.btn-success {
     border-radius: 10px;
     display: inline-block;
     vertical-align: top;
@@ -20,7 +22,8 @@ form{
     background-color: #3a518d;
     font-weight: 700;
 }
-hr{
+
+hr {
     display: block;
     width: 75%;
     height: 1px;
@@ -28,16 +31,20 @@ hr{
     border: 0;
     background-color: #aaaaaa;
 }
-.ogl{
+
+.ogl {
     padding-left: 35%;
 }
-body{
+
+body {
     background-color: #d9d9d9;
 }
-.container{
+
+.container {
     font-family: "Montserrat", sans-serif;
 }
-.btn__reset{
+
+.btn__reset {
     border-radius: 10px;
     display: inline-block;
     vertical-align: top;
@@ -48,29 +55,46 @@ body{
     background-color: darkred;
     font-weight: 700;
     margin-top: 10px;
+    margin-left: 10%;
 }
-.vib{
+
+.vib {
     border-radius: 10px;
     color: #3a518d;
     background-color: #d9d9d9;
     border-color: #3a518d;
 }
-.date{
+
+.date {
     border-radius: 10px;
     color: #3a518d;
     background-color: #d9d9d9;
     border-color: #3a518d;
 }
+
 .vivod {
     width: 450px;
     border: 2px solid #3a518d;
     border-radius: 25px;
     background-color: #d9d9d9;
     margin-top: 2%;
-  }
+}
+
 .sum {
     padding-left: 5%;
 }
-.sumALL{
+
+.sumALL {
     padding-left: 5%;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+.income{
+    width: 500px;
 }

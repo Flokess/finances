@@ -17,78 +17,98 @@
 <body>
 <div class="container">
     <h1 class="ogl">Система по учёту доходов и расходов</h1>
-    <form action="/php/db_save.php" method="post">
-        <h3>Введите расходы</h3>
-        <input
-                type="text"
-                class="form-control"
-                name="entry"
-                id="sum"
-                placeholder=""
-        />
-        <button class="btn-success" type="submit">Записать</button>
-        <br/><br/>
-        <input type="date" name="date" class="date"/>
-        <select name="category" class="vib">
-            <option value="1">Всякие фигульки</option>
-            <option value="2">Детки</option>
-            <option value="3">Забота о себе</option>
-            <option value="4">Здоровье и фитнес</option>
-            <option value="5">Кафе и рестораны</option>
-            <option value="6">Квартира(дом)</option>
-            <option value="7">Машина</option>
-            <option value="8">Образование</option>
-            <option value="9">Шоппинг</option>
-            <option value="10">Отдых и развлечение</option>
-            <option value="11">Подарки</option>
-        </select>
-        <hr/>
-    </form>
-    <form action="/php/result.php" method="post">
-        <h3>Расходы за месяц</h3>
-        <button class="btn-success" type="submit">Вычислить</button>
+    <div class="left">
+        <form action="/php/db_save.php" method="post" class="fullexpense">
+            <h3>Введите расходы</h3>
+            <input
+                    type="text"
+                    class="form-control"
+                    name="entry"
+                    id="sum"
+                    placeholder=""
+            />
+            <button class="btn-success" type="submit">Записать</button>
+            <br><br>
+            <input type="date" name="date" class="date"/>
+            <select name="categoryExpense" class="vib">
+                <option value="1">Всякие фигульки</option>
+                <option value="2">Детки</option>
+                <option value="3">Забота о себе</option>
+                <option value="4">Здоровье и фитнес</option>
+                <option value="5">Кафе и рестораны</option>
+                <option value="6">Квартира(дом)</option>
+                <option value="7">Машина</option>
+                <option value="8">Образование</option>
+                <option value="9">Шоппинг</option>
+                <option value="10">Отдых и развлечение</option>
+                <option value="11">Подарки</option>
+            </select>
+            <hr/>
+        </form>
+        <form action="/php/result.php" method="post" class="fullexpense">
+            <h3>Расходы за месяц</h3>
+            <button class="btn-success" type="submit">Вычислить</button>
 
-        <select name="month" class="vib">
-            <option value="1">Январь</option>
-            <option value="2">Февраль</option>
-            <option value="3">Март</option>
-            <option value="4">Апрель</option>
-            <option value="5">Май</option>
-            <option value="6">Июнь</option>
-            <option value="7">Июль</option>
-            <option value="8">Август</option>
-            <option value="9">Сентябрь</option>
-            <option value="10">Октябрь</option>
-            <option value="11">Ноябрь</option>
-            <option value="12">Декабрь</option>
-        </select>
-        <select name="category" class="vib">
-            <option value="1">Всякие фигульки</option>
-            <option value="2">Детки</option>
-            <option value="3">Забота о себе</option>
-            <option value="4">Здоровье и фитнес</option>
-            <option value="5">Кафе и рестораны</option>
-            <option value="6">Квартира(дом)</option>
-            <option value="7">Машина</option>
-            <option value="8">Образование</option>
-            <option value="9">Шоппинг</option>
-            <option value="10">Отдых и развлечение</option>
-            <option value="11">Подарки</option>
-            <option value="12">Все категории</option>
-        </select>
-        <br/><br/>
-        <div class="vivod">
-            <a class="sum">За <?php echo $name_month ?> на <?php echo $category ?>: </a>
-            <?php echo $sum?>
-        </div>
-        <div class="vivod">
-            <a class="sumALL">Траты за всё время: </a>
-            <?php echo $sumALL?>
-        </div>
-    </form>
-    <form action="/php/reset.php" class="reset">
-        <button type="submit" class="btn__reset">Сброс базы данных</button>
-    </form>
+            <select name="month" class="vib">
+                <option value="1">Январь</option>
+                <option value="2">Февраль</option>
+                <option value="3">Март</option>
+                <option value="4">Апрель</option>
+                <option value="5">Май</option>
+                <option value="6">Июнь</option>
+                <option value="7">Июль</option>
+                <option value="8">Август</option>
+                <option value="9">Сентябрь</option>
+                <option value="10">Октябрь</option>
+                <option value="11">Ноябрь</option>
+                <option value="12">Декабрь</option>
+            </select>
+            <select name="categoryExpense" class="vib">
+                <option value="1">Всякие фигульки</option>
+                <option value="2">Детки</option>
+                <option value="3">Забота о себе</option>
+                <option value="4">Здоровье и фитнес</option>
+                <option value="5">Кафе и рестораны</option>
+                <option value="6">Квартира(дом)</option>
+                <option value="7">Машина</option>
+                <option value="8">Образование</option>
+                <option value="9">Шоппинг</option>
+                <option value="10">Отдых и развлечение</option>
+                <option value="11">Подарки</option>
+                <option value="12">Все категории</option>
+            </select>
+            <br/><br/>
+            <div class="vivod">
+                <a class="sum">За <?php echo $name_month ?> на <?php echo $category ?>: </a>
+                <?php echo $sum?>
+            </div>
+            <div class="vivod">
+                <a class="sumALL">Траты за всё время: </a>
+                <?php echo $sumALL?>
+            </div>
+        </form>
+        <form action="/php/reset.php" class="reset" class="fullexpense">
+            <button type="submit" class="btn__reset">Сброс базы данных</button>
+        </form>
+    </div>
+    <div class="right">
+        <form action="/php/income.php" method="post" class="income">
+            <div class="incomeEntry">
+                <h3>Введите доходы</h3>
+                <input type="text" class="form-control" name="incomeEntry" placeholder="">
+                <button type="submit" class="btn-success">Записать</button>
+                <br><br>
+                <input type="date" name="date" class="date"/>
+                <select name="categoryIncome" class="vib">
+                    <option value="1">Заработная плата</option>
+                    <option value="2">Пенсия</option>
+                    <option value="3">Прочий доход</option>
+                </select>
+                <hr/>
+            </div>
+        </form>
+    </div>
 </div>
+
 </body>
 </html>
