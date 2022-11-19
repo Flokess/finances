@@ -31,7 +31,7 @@ class SQLQuery
         R::store($table);
     }
 
-    static function closeDB()
+    static function resetTableExpenses()
     {
         R::wipe('money');
 
@@ -55,5 +55,34 @@ class SQLQuery
         $table->category = $category;
 
         R::store($table);
+    }
+
+    static function categoryEconomy()
+    {
+        $year = date('Y');
+        $number = cal_days_in_month(CAL_GREGORIAN, $_POST['monthEconomy'], $year);
+        $date1 = date("Y-{$_POST['monthEconomy']}-01");
+        $date2 = date("Y-{$_POST['monthEconomy']}-{$number}");
+
+        $income = R::getAll("SELECT * FROM income WHERE date BETWEEN '{$date1}' AND '{$date2}'");
+        return $income;
+    }
+    static function categoryExpenses()
+    {
+        $year = date('Y');
+        $number = cal_days_in_month(CAL_GREGORIAN, $_POST['monthEconomy'], $year);
+        $date1 = date("Y-{$_POST['monthEconomy']}-01");
+        $date2 = date("Y-{$_POST['monthEconomy']}-{$number}");
+
+        $expenses = R::getAll("SELECT * FROM money WHERE date BETWEEN '{$date1}' AND '{$date2}'");
+        return $expenses;
+    }
+    static function resetTableIncome()
+    {
+        R::wipe('income');
+
+        header('Location: /');
+
+        R::close();
     }
 }

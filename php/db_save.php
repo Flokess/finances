@@ -19,4 +19,3 @@ if ($entry == 0 | $date == 0) {
     header('Location: /');
 }
 R::close();
-

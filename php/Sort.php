@@ -14,4 +14,13 @@ class Sort
         }
         return $sum;
     }
+    static function sumIncome($income)
+    {
+        $sum = 0;
+        foreach ($income as $incom) {
+            $sum += (int)$incom['quantity'];
+        }
+        return $sum;
+    }
+
 }
