@@ -9,7 +9,7 @@ $sumIncome = Sort::sumIncome($income);
 
 $expenses = SQLQuery::categoryExpenses();
 
-$name_month = (Sort::Search($_POST['monthEconomy'], SQLQuery::paramMonth));
+$name_monthEconomy = (Sort::Search($_POST['monthEconomy'], SQLQuery::paramMonth));
 
 $sumExpenses = Sort::sum($expenses);
 
