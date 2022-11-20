@@ -16,6 +16,6 @@ if ($quantity == 0 | $date == 0) {
     </script> <?php
 } else {
     SQLQuery::addRecordIncome($quantity, $date, $category);
-    header('Location: /');
+    header('Location: /income.html');
 }
 R::close();

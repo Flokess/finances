@@ -85,4 +85,12 @@ class SQLQuery
 
         R::close();
     }
+    static function expensesFull(){
+        $expensesFull = R::getAll("SELECT * FROM money");
+        return $expensesFull;
+    }
+    static function incomeFull(){
+        $incomeFull = R::getAll("SELECT * FROM income");
+        return $incomeFull;
+    }
 }

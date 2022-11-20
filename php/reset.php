@@ -4,3 +4,5 @@ SQLQuery::connect();
 
 SQLQuery::resetTableExpenses();
 
+header('Location: /');
+

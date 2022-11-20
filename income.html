@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMBSave</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <h1>
+        Учёт финансов
+    </h1>
+    <div class="content">
+        <div class="cont1">
+
+            <form action="/php/economy.php" method="post">
+                <div class="cont5">
+                    <h2>Просмотр данных</h2>
+                    <div class="cont3">
+                        <a href="/index.html" class="expenses-btn" style="background-color:white">Расходы</a>
+                        <a href="/income.html" class="income-btn" style="background-color:#FDC73A">Доходы</a>
+                    </div>
+                </div>
+
+                <div class="contviewInfomation">
+                    <select name="monthEconomy" class="vib" placeholder="Месяц">
+                        <option value="1">Январь</option>
+                        <option value="2">Февраль</option>
+                        <option value="3">Март</option>
+                        <option value="4">Апрель</option>
+                        <option value="5">Май</option>
+                        <option value="6">Июнь</option>
+                        <option value="7">Июль</option>
+                        <option value="8">Август</option>
+                        <option value="9">Сентябрь</option>
+                        <option value="10">Октябрь</option>
+                        <option value="11">Ноябрь</option>
+                        <option value="12">Декабрь</option>
+                    </select>
+                    <button type="submit" class="conclusion">Вывести</button>
+                </div>
+                <div class="contVivod">
+                    <p>Экономия за <?php echo $name_monthEconomy ?>: <?php echo $economy ?></p>
+                    <p>Экономия за всё время: <?php echo $economyFull ?></p>
+                </div>
+            </form>
+            <form action="/php/reset_income.php" method="post">
+                <button type="submit" class="reset">Сбросить доходы</button>
+            </form>
+        </div>
+        <hr>
+        <div class="cont2">
+            <form action="/php/income.php" method="post">
+                <div class="contInputdata">
+                    <div class="cont5">
+                        <h2>Добавить данные</h2>
+                        <div class="cont3">
+                            <a href="index.html" class="expenses-btn" style="background-color:white">Расходы</a>
+                            <a href="income.html" class="income-btn" style="background-color:#FDC73A">Доходы</a>
+                        </div>
+                    </div>
+
+                    <select name="categoryIncome" class="vib" placeholder="Категория">
+                        <option value="1">Заработная плата</option>
+                        <option value="2">Пенсия</option>
+                        <option value="3">Прочий доход</option>
+
+                    </select>
+                    <input type="date" name="date" class="vib" placeholder="Дата">
+                    <input type="text" name="incomeEntry" class="vib" placeholder="Сумма">
+                    <button type="submit" class="input">Занести</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
