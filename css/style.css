@@ -59,7 +59,7 @@ h1 {
     border-radius: 4px;
 
     /* Inside auto layout */
-
+    font-family: 'Raleway', sans-serif;
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -241,7 +241,7 @@ hr {
 
     background: #FDC73A;
     border-radius: 4px;
-
+    font-family: 'Raleway', sans-serif;
     /* Inside auto layout */
     border: 0;
     flex: none;

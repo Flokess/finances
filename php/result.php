@@ -15,7 +15,7 @@ $expenses = R::findAll('money');
 
 $sumALL = Sort::sum($expenses);
 
-require_once "../index.html";
+require_once "../expenses.html";
 
 
 

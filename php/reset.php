@@ -4,5 +4,4 @@ SQLQuery::connect();
 
 SQLQuery::resetTableExpenses();
 
-header('Location: /');
-
+header('Location: /expenses.html');

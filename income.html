@@ -15,16 +15,16 @@
 <body>
 <div class="container">
     <h1>
-        Учёт финансов
+        Учёт финансов. Привет <?=$_COOKIE['userName']?>, для выхода нажми <a href="/php/deleteCookie.php">тут</a>
     </h1>
     <div class="content">
         <div class="cont1">
 
-            <form action="/php/economy.php" method="post">
+            <form action="/php/economy.php" method="post" >
                 <div class="cont5">
                     <h2>Просмотр данных</h2>
                     <div class="cont3">
-                        <a href="/index.html" class="expenses-btn" style="background-color:white">Расходы</a>
+                        <a href="/expenses.html" class="expenses-btn" style="background-color:white">Расходы</a>
                         <a href="/income.html" class="income-btn" style="background-color:#FDC73A">Доходы</a>
                     </div>
                 </div>
@@ -57,12 +57,12 @@
         </div>
         <hr>
         <div class="cont2">
-            <form action="/php/income.php" method="post">
+            <form action="/php/income.php" method="post" name="form">
                 <div class="contInputdata">
                     <div class="cont5">
                         <h2>Добавить данные</h2>
                         <div class="cont3">
-                            <a href="index.html" class="expenses-btn" style="background-color:white">Расходы</a>
+                            <a href="expenses.html" class="expenses-btn" style="background-color:white">Расходы</a>
                             <a href="income.html" class="income-btn" style="background-color:#FDC73A">Доходы</a>
                         </div>
                     </div>
@@ -76,8 +76,8 @@
                     <input type="date" name="date" class="vib" placeholder="Дата">
                     <input type="text" name="incomeEntry" class="vib" placeholder="Сумма">
                     <button type="submit" class="input">Занести</button>
-                </div>
 
+                </div>
             </form>
         </div>
     </div>

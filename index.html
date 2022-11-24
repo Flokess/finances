@@ -15,89 +15,35 @@
 <body>
 <div class="container">
     <h1>
-        Учёт финансов
+        Идентификация пользователя
     </h1>
     <div class="content">
         <div class="cont1">
 
-            <form action="/php/result.php" method="post">
+            <form action="/php/reg_newUser.php" method="post">
                 <div class="cont5">
-                    <h2>Просмотр данных</h2>
-                    <div class="cont3">
-                        <a href="index.html" class="expenses-btn">Расходы</a>
-                        <a href="/income.html" class="income-btn">Доходы</a>
-                    </div>
+                    <h2>Регистрация</h2>
                 </div>
 
                 <div class="contviewInfomation">
-                    <select name="month" class="vib" placeholder="Месяц">
-                        <option value="1">Январь</option>
-                        <option value="2">Февраль</option>
-                        <option value="3">Март</option>
-                        <option value="4">Апрель</option>
-                        <option value="5">Май</option>
-                        <option value="6">Июнь</option>
-                        <option value="7">Июль</option>
-                        <option value="8">Август</option>
-                        <option value="9">Сентябрь</option>
-                        <option value="10">Октябрь</option>
-                        <option value="11">Ноябрь</option>
-                        <option value="12">Декабрь</option>
-                    </select>
-                    <select name="categoryExpense" class="vib" placeholder="Категория">
-                        <option value="1">Всякие фигульки</option>
-                        <option value="2">Детки</option>
-                        <option value="3">Забота о себе</option>
-                        <option value="4">Здоровье и фитнес</option>
-                        <option value="5">Кафе и рестораны</option>
-                        <option value="6">Квартира(дом)</option>
-                        <option value="7">Машина</option>
-                        <option value="8">Образование</option>
-                        <option value="9">Шоппинг</option>
-                        <option value="10">Отдых и развлечение</option>
-                        <option value="11">Подарки</option>
-                    </select>
-                    <button type="submit" class="conclusion">Вывести</button>
+                    <input type="text" class="vib" name="name" id="name" placeholder="Введите имя">
+                    <input type="text" class="vib" name="login" id="login" placeholder="Введите логин">
+                    <input type="password" class="vib" name="pass" id="pass" placeholder="Введите пароль">
+                    <button type="submit" class="conclusion">Зарегистрировать</button>
                 </div>
-                <div class="contVivod">
-                    <p>За <?php echo $name_month ?> на <?php echo $category ?>: <?php echo $sum?></p>
-                    <p>Траты за всё время: <?php echo $sumALL?></p>
-                </div>
-
-            </form>
-            <form action="/php/reset.php" method="post">
-                <button type="submit" class="reset">Сбросить расходы</button>
             </form>
         </div>
         <hr>
         <div class="cont2">
-            <form action="/php/db_save.php" method="post">
+            <form action="/php/login_user.php" method="post">
                 <div class="contInputdata">
                     <div class="cont5">
-                        <h2>Добавить данные</h2>
-                        <div class="cont3">
-                            <a href="index.html" class="expenses-btn">Расходы</a>
-                            <a href="income.html" class="income-btn">Доходы</a>
-                        </div>
+                        <h2>Авторизация</h2>
                     </div>
+                    <input type="text" class="vib" name="logininput" id="logininput" placeholder="Введите логин">
+                    <input type="password" class="vib" name="pasinput" id="pasinput" placeholder="Введите пароль">
+                    <button type="submit" class="input" class="conclusion">Войти</button>
 
-                    <select name="categoryExpense" class="vib" placeholder="Категория">
-                        <option value="1">Всякие фигульки</option>
-                        <option value="2">Детки</option>
-                        <option value="3">Забота о себе</option>
-                        <option value="4">Здоровье и фитнес</option>
-                        <option value="5">Кафе и рестораны</option>
-                        <option value="6">Квартира(дом)</option>
-                        <option value="7">Машина</option>
-                        <option value="8">Образование</option>
-                        <option value="9">Шоппинг</option>
-                        <option value="10">Отдых и развлечение</option>
-                        <option value="11">Подарки</option>
-
-                    </select>
-                    <input type="date" name="date" class="vib" placeholder="Дата">
-                    <input type="text" name="entry" class="vib" placeholder="Сумма">
-                    <button type="submit" class="input">Занести</button>
                 </div>
 
             </form>

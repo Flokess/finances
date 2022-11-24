@@ -10,6 +10,7 @@ class SQLQuery
 
     static function category()
     {
+        $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
         $category = (Sort::Search($_POST['categoryExpense'], self::paramCategory));
 
         $year = date('Y');
@@ -17,16 +18,18 @@ class SQLQuery
         $date1 = date("Y-{$_POST['month']}-01");
         $date2 = date("Y-{$_POST['month']}-{$number}");
 
-        $expenses = R::getAll("SELECT * FROM money WHERE date BETWEEN '{$date1}' AND '{$date2}' AND category='{$category}'");
+        $expenses = R::getAll("SELECT * FROM money WHERE date BETWEEN '{$date1}' AND '{$date2}' AND category='{$category}'  AND user__id = '{$id[0]['id']}' ");
         return $expenses;
     }
 
     static function addRecord($entry, $date, $category)
     {
+       $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
         $table = R::dispense('money');
         $table->sum = $entry;
         $table->date = $date;
         $table->category = $category;
+        $table->user__ID = $id[0]['id'];
 
         R::store($table);
     }
@@ -49,10 +52,12 @@ class SQLQuery
 
     static function addRecordIncome($income, $date, $category)
     {
+        $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
         $table = R::dispense('income');
         $table->quantity = $income;
         $table->date = $date;
         $table->category = $category;
+        $table->user__ID = $id[0]['id'];
 
         R::store($table);
     }
@@ -67,8 +72,10 @@ class SQLQuery
         $income = R::getAll("SELECT * FROM income WHERE date BETWEEN '{$date1}' AND '{$date2}'");
         return $income;
     }
+
     static function categoryExpenses()
     {
+
         $year = date('Y');
         $number = cal_days_in_month(CAL_GREGORIAN, $_POST['monthEconomy'], $year);
         $date1 = date("Y-{$_POST['monthEconomy']}-01");
@@ -77,6 +84,7 @@ class SQLQuery
         $expenses = R::getAll("SELECT * FROM money WHERE date BETWEEN '{$date1}' AND '{$date2}'");
         return $expenses;
     }
+
     static function resetTableIncome()
     {
         R::wipe('income');
@@ -85,12 +93,39 @@ class SQLQuery
 
         R::close();
     }
-    static function expensesFull(){
+
+    static function expensesFull()
+    {
         $expensesFull = R::getAll("SELECT * FROM money");
         return $expensesFull;
     }
-    static function incomeFull(){
+
+    static function incomeFull()
+    {
         $incomeFull = R::getAll("SELECT * FROM income");
         return $incomeFull;
     }
+
+    static function addRecordRegister($login, $name, $pas, $date)
+    {
+        $table = R::dispense('register');
+        $table->name = $name;
+        $table->pass = $pas;
+        $table->login = $login;
+        $table->date = $date;
+
+        R::store($table);
+    }
+
+    static function NewUserLogin()
+    {
+        return R::getAll("SELECT * FROM register WHERE login='{$_POST['login']}'") == null;
+    }
+
+    static function UserLogin($login, $pas){
+       $result = R::getAll("SELECT * FROM register WHERE login = '$login' AND pass='$pas'");
+       $user = $result;
+       return $user;
+    }
+
 }
