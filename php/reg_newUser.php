@@ -1,5 +1,6 @@
 <?php
 require_once "SQLQuery.php";
+require_once "Users.php";
 SQLQuery::connect();
 
 $login = filter_var(trim($_POST['login']),
@@ -11,7 +12,7 @@ $pas = filter_var(trim($_POST['pass']),
 $date = date('Y-m-d');
 
 
-if (!SQLQuery::NewUserLogin()) {
+if (!Users::NewUserLogin()) {
     ?>
     <script>
         alert("ТАКОЙ ПОЛЬЗОВАТЕЛЬ УЖЕ ЗАРЕГЕСТРИРОВАН");
@@ -41,6 +42,6 @@ if (!SQLQuery::NewUserLogin()) {
 $pas = md5($pas . "djkfhsdjf");
 
 
-SQLQuery::addRecordRegister($login, $name, $pas, $date);
+Users::addRecordRegister($login, $name, $pas, $date);
 
 header('Location: /index.html');

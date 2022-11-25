@@ -24,7 +24,7 @@ class SQLQuery
 
     static function addRecord($entry, $date, $category)
     {
-       $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
+        $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
         $table = R::dispense('money');
         $table->sum = $entry;
         $table->date = $date;
@@ -104,28 +104,6 @@ class SQLQuery
     {
         $incomeFull = R::getAll("SELECT * FROM income");
         return $incomeFull;
-    }
-
-    static function addRecordRegister($login, $name, $pas, $date)
-    {
-        $table = R::dispense('register');
-        $table->name = $name;
-        $table->pass = $pas;
-        $table->login = $login;
-        $table->date = $date;
-
-        R::store($table);
-    }
-
-    static function NewUserLogin()
-    {
-        return R::getAll("SELECT * FROM register WHERE login='{$_POST['login']}'") == null;
-    }
-
-    static function UserLogin($login, $pas){
-       $result = R::getAll("SELECT * FROM register WHERE login = '$login' AND pass='$pas'");
-       $user = $result;
-       return $user;
     }
 
 }

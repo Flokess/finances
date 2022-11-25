@@ -1,5 +1,6 @@
 <?php
 require_once "SQLQuery.php";
+require_once "Users.php";
 SQLQuery::connect();
 
 $login = filter_var(trim($_POST['logininput']),
@@ -11,7 +12,7 @@ $pas = md5($pas . "djkfhsdjf");
 
 //$result = R::getAll("SELECT * FROM register WHERE login = '{$login}' AND pass='{$pas}'");
 
-$user = SQLQuery::UserLogin($login, $pas);
+$user = Users::UserLogin($login, $pas);
 if(count($user) == 0){
     echo "Такой пользователь не найден";
     exit();
