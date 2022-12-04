@@ -13,6 +13,8 @@ $sum = Sort::sum($expenses);
 
 $expenses = R::findAll('money');
 
+$expenses = SQLQuery::allExpenses();
+
 $sumALL = Sort::sum($expenses);
 
 require_once "../expenses.html";

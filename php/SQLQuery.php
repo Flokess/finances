@@ -8,17 +8,20 @@ class SQLQuery
 
     public const paramCategoryIncome = ["Заработная плата" => "1", "Пенсия" => "2", "Прочий доход" => "3"];
 
-    static function category()
+    static function category($statistic = 0)
     {
         $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
         $category = (Sort::Search($_POST['categoryExpense'], self::paramCategory));
+
 
         $year = date('Y');
         $number = cal_days_in_month(CAL_GREGORIAN, $_POST['month'], $year);
         $date1 = date("Y-{$_POST['month']}-01");
         $date2 = date("Y-{$_POST['month']}-{$number}");
-
-        $expenses = R::getAll("SELECT * FROM money WHERE date BETWEEN '{$date1}' AND '{$date2}' AND category='{$category}'  AND user__id = '{$id[0]['id']}' ");
+        if ($statistic != 0) {
+            $expenses = R::getAll("SELECT * FROM money WHERE date BETWEEN '{$date1}' AND '{$date2}' AND user__id = '{$id[0]['id']}' ");
+        } else
+            $expenses = R::getAll("SELECT * FROM money WHERE date BETWEEN '{$date1}' AND '{$date2}' AND category='{$category}'  AND user__id = '{$id[0]['id']}' ");
         return $expenses;
     }
 
@@ -62,26 +65,33 @@ class SQLQuery
         R::store($table);
     }
 
-    static function categoryEconomy()
+    static function categoryEconomy($statistic = 1)
     {
+        $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
         $year = date('Y');
-        $number = cal_days_in_month(CAL_GREGORIAN, $_POST['monthEconomy'], $year);
-        $date1 = date("Y-{$_POST['monthEconomy']}-01");
-        $date2 = date("Y-{$_POST['monthEconomy']}-{$number}");
+        if ($statistic == 0) {
+            $number = cal_days_in_month(CAL_GREGORIAN, $_POST['month'], $year);
+            $date1 = date("Y-{$_POST['month']}-01");
+            $date2 = date("Y-{$_POST['month']}-{$number}");
+        } else {
+            $number = cal_days_in_month(CAL_GREGORIAN, $_POST['monthEconomy'], $year);
+            $date1 = date("Y-{$_POST['monthEconomy']}-01");
+            $date2 = date("Y-{$_POST['monthEconomy']}-{$number}");
+        }
 
-        $income = R::getAll("SELECT * FROM income WHERE date BETWEEN '{$date1}' AND '{$date2}'");
+        $income = R::getAll("SELECT * FROM income WHERE date BETWEEN '{$date1}' AND '{$date2}' AND user__id = '{$id[0]['id']}'");
         return $income;
     }
 
     static function categoryExpenses()
     {
-
+        $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
         $year = date('Y');
         $number = cal_days_in_month(CAL_GREGORIAN, $_POST['monthEconomy'], $year);
         $date1 = date("Y-{$_POST['monthEconomy']}-01");
         $date2 = date("Y-{$_POST['monthEconomy']}-{$number}");
 
-        $expenses = R::getAll("SELECT * FROM money WHERE date BETWEEN '{$date1}' AND '{$date2}'");
+        $expenses = R::getAll("SELECT * FROM money WHERE date BETWEEN '{$date1}' AND '{$date2}' AND user__id = '{$id[0]['id']}'");
         return $expenses;
     }
 
@@ -96,7 +106,11 @@ class SQLQuery
 
     static function expensesFull()
     {
-        $expensesFull = R::getAll("SELECT * FROM money");
+        $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
+
+        $expensesFull = R::getAll("SELECT * FROM money WHERE user__id = '{$id[0]['id']}' ");
+
+
         return $expensesFull;
     }
 
@@ -104,6 +118,13 @@ class SQLQuery
     {
         $incomeFull = R::getAll("SELECT * FROM income");
         return $incomeFull;
+    }
+
+    static function allExpenses()
+    {
+        $id = R::getAll("SELECT id FROM register WHERE name='{$_COOKIE['userName']}'");
+        $expenses = R::getAll("SELECT * FROM money WHERE user__id = '{$id[0]['id']}' ");
+        return $expenses;
     }
 
 }

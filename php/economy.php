@@ -3,7 +3,7 @@ require_once "Sort.php";
 require_once "SQLQuery.php";
 SQLQuery::connect();
 
-$income = SQLQuery::categoryEconomy();
+$income = SQLQuery::categoryEconomy(1);
 
 $sumIncome = Sort::sumIncome($income);
 
@@ -13,7 +13,7 @@ $name_monthEconomy = (Sort::Search($_POST['monthEconomy'], SQLQuery::paramMonth)
 
 $sumExpenses = Sort::sum($expenses);
 
-$expensesFull = SQLQuery::expensesFull();
+$expensesFull = SQLQuery::expensesFull(0);
 
 $expensesFullSum = Sort::sum($expensesFull);
 

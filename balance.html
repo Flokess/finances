@@ -15,23 +15,24 @@
 <body>
 <div class="container">
     <h1>
-        Учёт финансов. Привет <?=$_COOKIE['userName']?>, для выхода нажми <a href="/php/deleteCookie.php">тут</a>
+        Общая статистика <?=$_COOKIE['userName']?>. <a href="/php/deleteCookie.php">Выход</a>
     </h1>
+
     <div class="content">
         <div class="cont1">
 
-            <form action="/php/economy.php" method="post" >
+            <form action="/php/total_balance.php" method="post">
                 <div class="cont5">
-                    <h2>Просмотр данных</h2>
+                    <h2>Остаток по балансу</h2>
                     <div class="cont3">
-                        <a href="/expenses.html" class="expenses-btn" style="background-color:white">Расходы</a>
-                        <a href="/income.html" class="income-btn" style="background-color:#FDC73A">Доходы</a>
-                        <a href="balance.html" class="income-btn"> Подсчёт</a>
+                        <a href="expenses.html" class="expenses-btn" style="background-color:white">Расходы</a>
+                        <a href="/income.html" class="income-btn">Доходы</a>
+                        <a href="balance.html" class="income-btn" style="background-color:#FDC73A"> Подсчёт</a>
                     </div>
                 </div>
 
                 <div class="contviewInfomation">
-                    <select name="monthEconomy" class="vib" placeholder="Месяц">
+                    <select name="month" class="vib" placeholder="Месяц">
                         <option value="1">Январь</option>
                         <option value="2">Февраль</option>
                         <option value="3">Март</option>
@@ -48,41 +49,31 @@
                     <button type="submit" class="conclusion">Вывести</button>
                 </div>
                 <div class="contVivod">
-                    <p>Экономия за <?php echo $name_monthEconomy ?>: <?php echo $economy ?></p>
-                    <p>Экономия за всё время: <?php echo $economyFull ?></p>
+                    <p>Затраты за <?php echo $name_month?>: <?php echo $sumExpenses?> </p>
+                    <p>Доходы за <?php echo $name_month?>: <?php echo $sumIncome?></p>
+                    <p>Экономия за <?php echo $name_month?>: <?php echo $economyForMonth?></p>
                 </div>
             </form>
-            <form action="/php/reset_income.php" method="post">
-                <button type="submit" class="reset">Сбросить доходы</button>
+            <form action="" method="post">
+                <button type="submit" class="reset">Сбросить расходы</button>
             </form>
         </div>
         <hr>
         <div class="cont2">
-            <form action="/php/income.php" method="post" name="form">
+            <form action="" method="post">
                 <div class="contInputdata">
                     <div class="cont5">
-                        <h2>Добавить данные</h2>
+                        <h2>Ваш баланс: <?php echo $balance?> рублей</h2>
                         <div class="cont3">
                             <a href="expenses.html" class="expenses-btn" style="background-color:white">Расходы</a>
-                            <a href="income.html" class="income-btn" style="background-color:#FDC73A">Доходы</a>
-                            <a href="balance.html" class="income-btn">Подсчёт</a>
+                            <a href="/income.html" class="income-btn">Доходы</a>
+                            <a href="balance.html" class="income-btn" style="background-color:#FDC73A"> Подсчёт</a>
                         </div>
                     </div>
-
-                    <select name="categoryIncome" class="vib" placeholder="Категория">
-                        <option value="1">Заработная плата</option>
-                        <option value="2">Пенсия</option>
-                        <option value="3">Прочий доход</option>
-
-                    </select>
-                    <input type="date" name="date" class="vib" placeholder="Дата">
-                    <input type="text" name="incomeEntry" class="vib" placeholder="Сумма">
-                    <button type="submit" class="input">Занести</button>
-
-                </div>
             </form>
         </div>
     </div>
+
 </div>
 </body>
 
