@@ -10,7 +10,7 @@ Developer: Egor Melekhin
 
 #Настройка:
 
-1. ![Alt text](https://imgur.com/a/3lOZYlt "Optional title")
+1. ![Alt text](https://i.imgur.com/CtaPQNE.png "Optional title")
 2. На 53 строчке кода ввести свой hostname. Login и pass от базы данных, так же написать имя таблицы.
 
 **ГОТОВО**
